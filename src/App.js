@@ -2,6 +2,8 @@
 import React, { useEffect, Fragment } from 'react';
 //Import SearchBar component
 import SearchBar from './components/layout/SearchBar'
+//Import SearchBar component
+import Logs from './components/logs/Logs'
 // Import materialize package
 import 'materialize-css/dist/css/materialize.min.css';
 // Import JS from materialize package
@@ -19,6 +21,9 @@ const App = () => {
   return (
     <Fragment>
       <SearchBar />
+      <div className='container'>
+        <Logs />
+      </div>
     </Fragment>
   );
 }
