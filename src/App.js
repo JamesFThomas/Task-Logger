@@ -1,5 +1,9 @@
 // Import React framework and hooks
-import React, { useEffect } from 'react';
+import React, { useEffect, Fragment } from 'react';
+//Import SearchBar component
+import SearchBar from './components/layout/SearchBar'
+//Import SearchBar component
+import Logs from './components/logs/Logs'
 // Import materialize package
 import 'materialize-css/dist/css/materialize.min.css';
 // Import JS from materialize package
@@ -15,9 +19,12 @@ const App = () => {
     M.AutoInit();
   })
   return (
-    <div className="App">
-      My App
-    </div>
+    <Fragment>
+      <SearchBar />
+      <div className='container'>
+        <Logs />
+      </div>
+    </Fragment>
   );
 }
 
