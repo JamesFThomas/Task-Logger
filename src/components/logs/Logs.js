@@ -1,7 +1,9 @@
 // IMport React Package and hooks
 import React, { useState, useEffect } from 'react'
-// import LOgItem component
+// import LogItem component
 import LogItem from './LogItem'
+// import PreLoader component
+import Preloader from '../layout/Preloader'
 
 
 const Logs = () => {
@@ -31,8 +33,10 @@ const Logs = () => {
     // eslint-disable-next-line
   },[]);
 
+  // check for loading attribute
   if(loading){
-    return <h4>Loading...</h4>
+    // if true display Preloader component
+    return < Preloader/>
   }
 
   return (
