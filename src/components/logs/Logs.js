@@ -1,6 +1,7 @@
 // IMport React Package and hooks
 import React, { useState, useEffect } from 'react'
-//
+// import LOgItem component
+import LogItem from './LogItem'
 
 
 const Logs = () => {
@@ -35,14 +36,16 @@ const Logs = () => {
   }
 
   return (
-    <ul className='collection-with-header'>
+    <ul className='collection with-header'>
       <li className='collection-header'>
         <h4 className='center'> System Logs </h4>
       </li>
+      {/* Conditionally render loading message if no logs returned*/}
         { !loading && !logs.length ? (
           <p className='center'> No Logs Returned</p>
         ) : (
-          logs.map(log => <li key={log.id}>{log.message}</li>)
+          // If logs returned map through logs array and render each in own LogItem component
+          logs.map(log => <LogItem key={log.id} log={log}/>)
         )}
     </ul>
   )
