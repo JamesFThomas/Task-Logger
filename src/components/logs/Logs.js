@@ -1,6 +1,9 @@
 // IMport React Package and hooks
 import React, { useState, useEffect } from 'react'
-//
+// import LogItem component
+import LogItem from './LogItem'
+// import PreLoader component
+import Preloader from '../layout/Preloader'
 
 
 const Logs = () => {
@@ -30,19 +33,23 @@ const Logs = () => {
     // eslint-disable-next-line
   },[]);
 
+  // check for loading attribute
   if(loading){
-    return <h4>Loading...</h4>
+    // if true display Preloader component
+    return < Preloader/>
   }
 
   return (
-    <ul className='collection-with-header'>
+    <ul className='collection with-header'>
       <li className='collection-header'>
         <h4 className='center'> System Logs </h4>
       </li>
+      {/* Conditionally render loading message if no logs returned*/}
         { !loading && !logs.length ? (
           <p className='center'> No Logs Returned</p>
         ) : (
-          logs.map(log => <li key={log.id}>{log.message}</li>)
+          // If logs returned map through logs array and render each in own LogItem component
+          logs.map(log => <LogItem key={log.id} log={log}/>)
         )}
     </ul>
   )
