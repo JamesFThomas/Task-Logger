@@ -8,6 +8,12 @@ import Logs from './components/logs/Logs'
 import AddBtn from './components/layout/AddBtn'
 // import AddLogModal component
 import AddLogModal from './components/logs/AddLogModal'
+// import AddLogModal component
+import EditLogModal from './components/logs/EditLogModal'
+// import AddTechModal component
+import AddTechModal from './components/techs/AddTechModal'
+// import TechListModal component
+import TechListModal from './components/techs/TechListModal'
 // Import materialize package
 import 'materialize-css/dist/css/materialize.min.css';
 // Import JS from materialize package
@@ -28,6 +34,9 @@ const App = () => {
       <div className='container'>
         <AddBtn />
         <AddLogModal />
+        <EditLogModal />
+        <AddTechModal />
+        <TechListModal />
         <Logs />
       </div>
     </Fragment>
