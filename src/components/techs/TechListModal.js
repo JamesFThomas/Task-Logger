@@ -1,5 +1,7 @@
 // IMport React Package and hooks
 import React, { useState, useEffect } from 'react'
+// Import TechItem component
+import TechItem from './TechItem'
 
 const TechListModal = () => {
   // Initialize stat variables && useState hooks
@@ -34,7 +36,7 @@ const TechListModal = () => {
         <h4> Technician List</h4>
           <ul className='collection'>
             {!loading && techs.map(tech => (
-              <li key={tech.id} className='collection-item'>{tech.firstName}</li>
+              <TechItem key={tech.id} tech={tech}/>
             ))}
           </ul>
       </div>
