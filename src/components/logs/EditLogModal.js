@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 // Import materialize package
 import M from 'materialize-css/dist/js/materialize.min.js'
 
-const AddLogModal = () => {
+const EditLogModal = () => {
   // Initialize useState hook and component state variables
   const [message, setMessage] = useState('');
   const [attention, setAttention] = useState(false);
@@ -17,7 +17,6 @@ const AddLogModal = () => {
     else{
       console.log(message, tech, attention);
     }
-    
     // clear modal input fields after closing
     setMessage('');
     setTech('');
@@ -25,7 +24,7 @@ const AddLogModal = () => {
   };
 
   return (
-    <div id='add-log-modal' className='modal' style={modalStyle}>
+    <div id='edit-log-modal' className='modal' style={modalStyle}>
       {/* Modal content */}
       <div className='modal-content'>
         <h4> Enter System Log</h4>
@@ -98,4 +97,4 @@ const modalStyle = {
   height: '75%'
 };
 
-export default AddLogModal;
+export default EditLogModal;
