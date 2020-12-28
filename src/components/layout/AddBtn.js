@@ -25,7 +25,7 @@ const AddBtn = () => {
         <li>
           {/* Add person to list of technicians modal */}
           <a
-            href='#tech-modal'
+            href='#add-tech-modal'
             className='btn-floating red modal-trigger'
           >
             <i className='material-icons'>person_add</i>

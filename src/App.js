@@ -10,6 +10,8 @@ import AddBtn from './components/layout/AddBtn'
 import AddLogModal from './components/logs/AddLogModal'
 // import AddLogModal component
 import EditLogModal from './components/logs/EditLogModal'
+// import AddTechModal component
+import AddTechModal from './components/techs/AddTechModal'
 // Import materialize package
 import 'materialize-css/dist/css/materialize.min.css';
 // Import JS from materialize package
@@ -30,6 +32,7 @@ const App = () => {
       <div className='container'>
         <AddBtn />
         <AddLogModal />
+        <AddTechModal />
         <EditLogModal />
         <Logs />
       </div>
