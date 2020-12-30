@@ -34,7 +34,7 @@ const Logs = ({ log: { logs, loading}, getLogs }) => {
       </li>
       {/* Conditionally render loading message if no logs returned*/}
         { !loading && !logs.length ? (
-          <p className='center'> No Logs Returned</p>
+          <p className='center'> No Logs To Display...</p>
         ) : (
           // If logs returned map through logs array and render each in own LogItem component
           logs.map(log => <LogItem key={log.id} log={log}/>)
@@ -46,6 +46,7 @@ const Logs = ({ log: { logs, loading}, getLogs }) => {
 // Create Proptypes requirement for component
 Logs.protoTypes = {
   log: PropTypes.object.isRequired,
+  getLogs: PropTypes.func.isRequired,
 }
 
 

@@ -2,24 +2,24 @@
   "logs": [
     {
       "id": 1,
-      "message": "Changed hard drive on workstation 005",
+      "message": "change hard drive in workstation 001 - (fixed) by (TS)",
       "attention": false,
-      "date": "03-02-2020",
-      "tech": "Tyrone Smith"
+      "tech": "Tyrone Smith",
+      "date": "2020-12-30T19:40:26.513Z"
     },
     {
-      "id": 2,
-      "message": "Workstation 007 not posting",
+      "message": "workstation L001 hard drive updated ",
+      "attention": false,
+      "tech": "John Jenkins",
+      "date": "2020-12-30T18:20:48.467Z",
+      "id": 2
+    },
+    {
+      "message": "work station 099 needs new fan",
       "attention": true,
-      "date": "03-02-2020",
-      "tech": "John Jenkins"
-    },
-    {
-      "id": 3,
-      "message": "Changed memory on workstation 050",
-      "attention": false,
-      "date": "03-02-2020",
-      "tech": "Derick Wilson"
+      "tech": "Derick Wilson",
+      "date": "2020-12-30T18:21:14.572Z",
+      "id": 3
     }
   ],
   "techs": [
