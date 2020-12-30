@@ -1,11 +1,15 @@
 // Import react and hooks
-import React, { useState } from 'react'
-//IMport connect package
+import React, { useState } from 'react';
+// Import TechSelectOptions component
+import TechSelectOptions from '../techs/TechSelectOptions';
+// Import connect package
 import { connect } from 'react-redux';
 // Import prop-types package
 import PropTypes from 'prop-types';
 // Import logAction functionality pass in as prop to component
 import { addLog } from '../../actions/logActions'
+
+
 // Import materialize package
 import M from 'materialize-css/dist/js/materialize.min.js'
 
@@ -72,9 +76,7 @@ const AddLogModal = ({ addLog }) => {
                 <option value='' disabled>
                   Select Technician
                 </option>
-                <option value='John Jenkins'> John Jenkins </option>
-                <option value='Tyrone Smith'> Tyrone Smith </option>
-                <option value='Derick Wilson'> Derick Wilson </option>
+                < TechSelectOptions />
               </select>
             </div>
           </div>

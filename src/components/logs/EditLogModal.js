@@ -1,6 +1,8 @@
 // Import react and hooks
-import React, { useState, useEffect } from 'react'
-//IMport connect package
+import React, { useState, useEffect } from 'react';
+// Import TechSelectOptions component
+import TechSelectOptions from '../techs/TechSelectOptions';
+// Import connect package
 import { connect } from 'react-redux';
 // Import prop-types package
 import PropTypes from 'prop-types';
@@ -81,9 +83,7 @@ const EditLogModal = ({ current, updateLog }) => {
                 <option value='' disabled>
                   Select Technician
                 </option>
-                <option value='John Jenkins'> John Jenkins </option>
-                <option value='Tyrone Smith'> Tyrone Smith </option>
-                <option value='Derick Wilson'> Derick Wilson </option>
+                <TechSelectOptions />
               </select>
             </div>
           </div>
