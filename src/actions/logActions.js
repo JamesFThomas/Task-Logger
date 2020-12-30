@@ -7,6 +7,9 @@ import {
   LOGS_ERROR,
   ADD_LOG,
   DELETE_LOG,
+  SET_CURRENT,
+  CLEAR_CURRENT,
+  UPDATE_LOG
 } from './types'
 
 // Function - GET logs from DB file
@@ -118,4 +121,52 @@ export const deleteLog = (id) => async dispatch => {
       payload: error.response.data
     });
   };
-}
+};
+
+// Function - SET specific log to current state attribute value
+export const setCurrent = (log) => {
+  return {
+    type: SET_CURRENT,
+    payload: log
+  }
+};
+
+// Function - CLEAR specific log from current state attribute value
+export const clearCurrent = () => {
+  return {
+    type: CLEAR_CURRENT
+  }
+};
+
+// Function - UPDATE log in DB file
+export const updateLog = (log) => async dispatch => {
+
+  try {
+    // update state loading attribute to show preloader component
+    setLoading();
+    // await response from fetch request, delete method
+    const res = await fetch(`/logs/${log.id}`,{
+      method: 'PUT',
+      body: JSON.stringify(log),
+      headers: {
+        'Content-Type':'application/json'
+      }
+    });
+
+    // create variable await json version of message
+    const data = await res.json();
+
+    //create dispatch object to go to reducer, with type and payload to update state
+    dispatch({
+       type: UPDATE_LOG,
+       payload: data
+    });
+
+  } catch (error) {
+    // If any errors occur during request for data
+    dispatch({
+      type: LOGS_ERROR,
+      payload: error.response.data
+    });
+  };
+};
