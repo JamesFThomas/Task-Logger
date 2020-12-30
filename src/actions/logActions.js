@@ -55,7 +55,7 @@ export const getLogs = () => async dispatch => {
     // If any errors occur during request for data
     dispatch({
       type: LOGS_ERROR,
-      payload: error.response.data
+      payload: error.response.statusText
     });
   };
 };
@@ -94,7 +94,7 @@ export const addLog = (log) => async dispatch =>{
     // If any errors occur during request for data
     dispatch({
       type: LOGS_ERROR,
-      payload: error.response.data
+      payload: error.response.statusText
     });
   };
 }
@@ -119,7 +119,7 @@ export const deleteLog = (id) => async dispatch => {
     // If any errors occur during request for data
     dispatch({
       type: LOGS_ERROR,
-      payload: error.response.data
+      payload: error.response.statusText
     });
   };
 };
@@ -167,7 +167,7 @@ export const updateLog = (log) => async dispatch => {
     // If any errors occur during request for data
     dispatch({
       type: LOGS_ERROR,
-      payload: error.response.data
+      payload: error.response.statusText
     });
   };
 };
@@ -191,7 +191,7 @@ export const searchLogs = (text) => async dispatch => {
     // If any errors occur during request for data
     dispatch({
       type: LOGS_ERROR,
-      payload: error.response.data
+      payload: error.response.statusText
     });
   };
 }
