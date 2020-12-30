@@ -12,6 +12,7 @@ const initialState = {
 
 
 // create reducer to update log state
+// eslint-disable-next-line
 export default (state = initialState, action) => {
   switch(action.type){
     case GET_LOGS:

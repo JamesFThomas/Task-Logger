@@ -26,21 +26,20 @@ import { GET_LOGS, SET_LOADING, LOGS_ERROR } from './types'
   };
 */
 
+// Function - GET logs from json server
 export const getLogs = () => async dispatch => {
   try {
     // update state loading attribute to show preloader component
     setLoading();
-
-     // create variable set to return value of fetch to GET logs
-     const res = await fetch('/logs');
-     // create variable set to json format of returned data
-     const data = await res.json();
-
-     //create dispatch object to go to reducer
-     dispatch({
+    // create variable set to return value of fetch to GET logs
+    const res = await fetch('/logs');
+    // create variable set to json format of returned data
+    const data = await res.json();
+    //create dispatch object to go to reducer
+    dispatch({
        type: GET_LOGS,
        payload: data
-     });
+    });
 
   } catch (error) {
     // If any errors occur during request for data
@@ -57,5 +56,4 @@ export const setLoading = () =>{
   return {
     type: SET_LOADING
   }
-
 };
