@@ -1,13 +1,30 @@
 // Import react and hooks
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+//IMport connect package
+import { connect } from 'react-redux';
+// Import prop-types package
+import PropTypes from 'prop-types';
+// Import logAction functionality pass in as prop to component
+import { updateLog } from '../../actions/logActions'
+
 // Import materialize package
 import M from 'materialize-css/dist/js/materialize.min.js'
 
-const EditLogModal = () => {
+// ----- Component ----- //
+const EditLogModal = ({ current, updateLog }) => {
   // Initialize useState hook and component state variables
   const [message, setMessage] = useState('');
   const [attention, setAttention] = useState(false);
   const [tech, setTech] = useState('');
+
+  // React Hook
+  useEffect(()=>{
+    if(current){
+      setMessage(current.message);
+      setAttention(current.attention);
+      setTech(current.tech);
+    }
+  }, [ current ])
 
   // Function - capture form values and submit to state
   const onSubmit = () =>{
@@ -15,12 +32,26 @@ const EditLogModal = () => {
       M.toast({ html: 'Please enter a Task and Tech to attend...' })
     }
     else{
-      console.log(message, tech, attention);
+      // create new log object to be persisted
+      const updLog = {
+        id: current.id,
+        message,
+        attention,
+        tech,
+        date: new Date()
+      };
+
+      // persist updated log in DB
+      updateLog(updLog);
+
+      // use toast to indicate successful log update
+      M.toast({ html: `Log Updated by ${tech}` })
+
+      // clear modal input fields after closing
+      setMessage('');
+      setTech('');
+      setAttention(false);
     }
-    // clear modal input fields after closing
-    setMessage('');
-    setTech('');
-    setAttention(false);
   };
 
   return (
@@ -36,9 +67,6 @@ const EditLogModal = () => {
                 value={message}
                 onChange={e => setMessage(e.target.value)}
               />
-              <label htmlFor='message' className='active'>
-                Log Message
-              </label>
             </div>
           </div>
 
@@ -91,10 +119,22 @@ const EditLogModal = () => {
   );
 };
 
+// create prop types requirements object
+EditLogModal.propTypes = {
+  updateLog: PropTypes.func.isRequired,
+  current: PropTypes.object,
+}
+
 // setting styling on modal
 const modalStyle = {
   width: '75%',
   height: '75%'
 };
 
-export default EditLogModal;
+// Create object, copy state values to be updated
+const mapStateToProps = (state) => ({
+  current: state.log.current
+});
+
+// export AddLogModal component and connection function to access/update state
+export default connect(mapStateToProps, { updateLog })(EditLogModal);

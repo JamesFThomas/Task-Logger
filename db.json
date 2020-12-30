@@ -1,11 +1,11 @@
 {
   "logs": [
     {
-      "message": "changes hard drive in workstation 001",
-      "attention": true,
+      "id": 1,
+      "message": "change hard drive in workstation 001 - (fixed) by (TS)",
+      "attention": false,
       "tech": "Tyrone Smith",
-      "date": "2020-12-30T18:19:59.295Z",
-      "id": 1
+      "date": "2020-12-30T19:40:26.513Z"
     },
     {
       "message": "workstation L001 hard drive updated ",
