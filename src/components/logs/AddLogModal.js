@@ -1,9 +1,15 @@
 // Import react and hooks
 import React, { useState } from 'react'
+//IMport connect package
+import { connect } from 'react-redux';
+// Import prop-types package
+import PropTypes from 'prop-types';
+// Import logAction functionality pass in as prop to component
+import { addLog } from '../../actions/logActions'
 // Import materialize package
 import M from 'materialize-css/dist/js/materialize.min.js'
 
-const AddLogModal = () => {
+const AddLogModal = ({ addLog }) => {
   // Initialize useState hook and component state variables
   const [message, setMessage] = useState('');
   const [attention, setAttention] = useState(false);
@@ -15,13 +21,25 @@ const AddLogModal = () => {
       M.toast({ html: 'Please enter a Task and Tech to attend...' })
     }
     else{
-      console.log(message, tech, attention);
+      // create a new log object
+      const newLog = {
+        message,
+        attention,
+        tech,
+        date: new Date()
+      }
+
+      // Invoke addLog function to add new log to DB
+      addLog(newLog);
+
+      // create toast showing successful add of new log
+      M.toast({ html: `Log added by ${tech}`});
+
+      // clear modal input fields after closing
+      setMessage('');
+      setTech('');
+      setAttention(false);
     }
-    
-    // clear modal input fields after closing
-    setMessage('');
-    setTech('');
-    setAttention(false);
   };
 
   return (
@@ -92,10 +110,16 @@ const AddLogModal = () => {
   );
 };
 
+// Add prop-types requirements for component
+AddLogModal.propTypes = {
+  addLog: PropTypes.func.isRequired,
+}
+
 // setting styling on modal
 const modalStyle = {
   width: '75%',
   height: '75%'
 };
 
-export default AddLogModal;
+// export AddLogModal component and connection function to access/update state
+export default connect(null, { addLog })(AddLogModal);

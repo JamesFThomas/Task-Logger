@@ -1,5 +1,10 @@
 //Import string variables from types to dispatch payload to reducer for state manipulation
-import { GET_LOGS, SET_LOADING, LOGS_ERROR } from '../actions/types'
+import {
+  GET_LOGS,
+  SET_LOADING,
+  LOGS_ERROR,
+  ADD_LOG,
+} from '../actions/types'
 
 
 // Create Initial State for logs
@@ -20,7 +25,13 @@ export default (state = initialState, action) => {
         ...state,
         logs: action.payload,
         loading: false
-      }
+      };
+      case ADD_LOG:
+        return {
+          ...state,
+          logs: [...state.logs, action.payload],
+          loading: false
+        }
     case SET_LOADING:
       return {
         ...state,
