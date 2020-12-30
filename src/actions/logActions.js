@@ -6,6 +6,7 @@ import {
   SET_LOADING,
   LOGS_ERROR,
   ADD_LOG,
+  DELETE_LOG,
 } from './types'
 
 // Function - GET logs from DB file
@@ -83,6 +84,31 @@ export const addLog = (log) => async dispatch =>{
     dispatch({
        type: ADD_LOG,
        payload: data
+    });
+
+  } catch (error) {
+    // If any errors occur during request for data
+    dispatch({
+      type: LOGS_ERROR,
+      payload: error.response.data
+    });
+  };
+}
+
+// Function - DELETE a log from json server
+export const deleteLog = (id) => async dispatch => {
+  try {
+    // update state loading attribute to show preloader component
+    setLoading();
+    // await response from fetch request, delete method
+    await fetch(`/logs/${id}`,{
+      method: 'DELETE',
+    });
+
+    //create dispatch object to go to reducer, with type and payload to update state
+    dispatch({
+       type: DELETE_LOG,
+       payload: id
     });
 
   } catch (error) {
