@@ -9,7 +9,8 @@ import {
   DELETE_LOG,
   SET_CURRENT,
   CLEAR_CURRENT,
-  UPDATE_LOG
+  UPDATE_LOG,
+  SEARCH_LOGS
 } from './types'
 
 // Function - GET logs from DB file
@@ -57,7 +58,7 @@ export const getLogs = () => async dispatch => {
       payload: error.response.data
     });
   };
-}
+};
 
 // Function - updates the loading state attribute to true (loading default set to false)
 export const setLoading = () =>{
@@ -170,3 +171,27 @@ export const updateLog = (log) => async dispatch => {
     });
   };
 };
+
+// Function - SEARCH logs from json server
+export const searchLogs = (text) => async dispatch => {
+  try {
+    // update state loading attribute to show preloader component
+    setLoading();
+    // create variable set to return value of fetch to GET logs containing certain text
+    const res = await fetch(`/logs?q=${text}`);
+    // create variable set to json format of returned data
+    const data = await res.json();
+    //create dispatch object to go to reducer
+    dispatch({
+       type: SEARCH_LOGS,
+       payload: data
+    });
+
+  } catch (error) {
+    // If any errors occur during request for data
+    dispatch({
+      type: LOGS_ERROR,
+      payload: error.response.data
+    });
+  };
+}
