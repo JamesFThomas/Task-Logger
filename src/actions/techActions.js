@@ -1,4 +1,4 @@
-//Import string variables from types to dispatch payload to reducer for state manipulation
+// Import string variables from types to dispatch payload to reducer for state manipulation
 import {
   GET_TECHS,
   ADD_TECH,
@@ -53,6 +53,30 @@ export const addTech = (tech) => async dispatch => {
     dispatch({
        type: ADD_TECH,
        payload: data
+    });
+
+  } catch (error) {
+    // If any errors occur during request for data
+    dispatch({
+      type: TECHS_ERROR,
+      payload: error.response.statusText
+    });
+  };
+};
+
+// Function - DELETE tech from list of techs via JSON server
+export const deleteTech = (id) => async dispatch => {
+  try {
+    // update state loading attribute to show preloader component
+    setLoading();
+    // create variable set to return value of fetch to GET logs
+    await fetch(`/techs/${id}`, {
+      method: 'DELETE'
+    });
+    //create dispatch object to go to reducer
+    dispatch({
+       type: DELETE_TECH,
+       payload: id
     });
 
   } catch (error) {
