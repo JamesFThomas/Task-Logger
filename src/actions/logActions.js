@@ -42,7 +42,7 @@ export const getLogs = () => async dispatch => {
     // update state loading attribute to show preloader component
     setLoading();
     // create variable set to return value of fetch to GET logs
-    const res = await fetch('/logs');
+    const res = await fetch('https://my-json-server.typicode.com/jamesfthomas/Task-Logger-Server/logs');
     // create variable set to json format of returned data
     const data = await res.json();
     //create dispatch object to go to reducer
@@ -75,7 +75,7 @@ export const addLog = (log) => async dispatch =>{
     setLoading();
     // create variable set to return value of fetch to GET logs
       // include options object
-    const res = await fetch('/logs', {
+    const res = await fetch('https://my-json-server.typicode.com/jamesfthomas/Task-Logger-Server/logs', {
       method: 'POST',
       body: JSON.stringify(log),
       headers:{
@@ -105,7 +105,7 @@ export const deleteLog = (id) => async dispatch => {
     // update state loading attribute to show preloader component
     setLoading();
     // await response from fetch request, delete method
-    await fetch(`/logs/${id}`,{
+    await fetch(`https://my-json-server.typicode.com/jamesfthomas/Task-Logger-Server/logs/${id}`,{
       method: 'DELETE',
     });
 
@@ -146,7 +146,7 @@ export const updateLog = (log) => async dispatch => {
     // update state loading attribute to show preloader component
     setLoading();
     // await response from fetch request, delete method
-    const res = await fetch(`/logs/${log.id}`,{
+    const res = await fetch(`https://my-json-server.typicode.com/jamesfthomas/Task-Logger-Server/logs/${log.id}`,{
       method: 'PUT',
       body: JSON.stringify(log),
       headers: {
@@ -178,7 +178,7 @@ export const searchLogs = (text) => async dispatch => {
     // update state loading attribute to show preloader component
     setLoading();
     // create variable set to return value of fetch to GET logs containing certain text
-    const res = await fetch(`/logs?q=${text}`);
+    const res = await fetch(`https://my-json-server.typicode.com/jamesfthomas/Task-Logger-Server/logs?q=${text}`);
     // create variable set to json format of returned data
     const data = await res.json();
     //create dispatch object to go to reducer

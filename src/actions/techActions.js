@@ -15,7 +15,7 @@ export const getTechs = () => async dispatch => {
     // update state loading attribute to show preloader component
     setLoading();
     // create variable set to return value of fetch to GET logs
-    const res = await fetch('/techs');
+    const res = await fetch('https://my-json-server.typicode.com/jamesfthomas/Task-Logger-Server/techs');
     // create variable set to json format of returned data
     const data = await res.json();
     //create dispatch object to go to reducer
@@ -40,7 +40,7 @@ export const addTech = (tech) => async dispatch => {
     setLoading();
     // create variable set to return value of fetch to POST /techs
       // including options object
-    const res = await fetch('/techs', {
+    const res = await fetch('https://my-json-server.typicode.com/jamesfthomas/Task-Logger-Server/techs', {
       method: 'POST',
       body: JSON.stringify(tech),
       headers: {
@@ -70,7 +70,7 @@ export const deleteTech = (id) => async dispatch => {
     // update state loading attribute to show preloader component
     setLoading();
     // create variable set to return value of fetch to GET logs
-    await fetch(`/techs/${id}`, {
+    await fetch(`https://my-json-server.typicode.com/jamesfthomas/Task-Logger-Server/techs/${id}`, {
       method: 'DELETE'
     });
     //create dispatch object to go to reducer
