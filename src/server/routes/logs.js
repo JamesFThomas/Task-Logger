@@ -2,11 +2,13 @@
 const express = require('express');
 // create new router for users routes
 const router = express.Router()
+// Import Log model to enter logs into application db
 
                             // logs
 // GET logs - retrieve all logs
 router.get('/', function (req, res) {
   res.send('GET logs route hit')
+  res.send()
 });
 // POST logs - add a log to db
 router.post('/', function (req, res) {
