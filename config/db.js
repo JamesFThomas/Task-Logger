@@ -7,22 +7,25 @@ const db = config.get('mongoURI');
 
 
 // Function => create connection to cloud DB instance
-const connectDB = () => {
-  mongoose.connect(db, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true
-  } )
-  .then(() => {
+const connectDB =  async () => {
+  try {
+    // Await success response from mongoDB atlas
+    await mongoose.connect(db, {
+      useNewUrlParser: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+      useUnifiedTopology: true
+    } );
+
+    // Display success message when connected
     console.log('Release The Mongeese...');
-  })
-  .catch((error) => {
+  } catch (error) {
+    // Display error message if connection fails
     console.error(error.message);
     // exit the process with failure
     process.exit(1);
-  })
-}
+  }
+};
 
 // export the connection function to use in server file
 module.exports = connectDB;
