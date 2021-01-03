@@ -3,6 +3,11 @@ const mongoose = require('mongoose');
 
 // Create model for log data to be saved in database
 const LogSchema = mongoose.mongoose.Schema({
+  // Include Techs as foreign key to match log to tech
+  tech: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'techs'
+  },
   message: {
     type: String,
     required: true
@@ -17,7 +22,7 @@ const LogSchema = mongoose.mongoose.Schema({
   },
   date: {
     type: Date,
-    required: true
+    default: Date.now
   }
 });
 

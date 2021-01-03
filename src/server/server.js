@@ -24,13 +24,6 @@ app.get('/', (req, res) => {
 app.use('/logs', require('./routes/logs'));
 app.use('/techs', require('./routes/techs'));
 
-
-                                   //Routes
-
-
-
-
-
 // Set connection message to show when server started
 app.listen(port, () => {
   console.log(`Server listening on PORT: ${port}`)
