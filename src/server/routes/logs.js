@@ -64,8 +64,21 @@ router.put(`/:id`, function (req, res) {
 // @route DELETE/logs
 // @desc remove a log from database
 // @access public
-router.delete(`/:id`, function (req, res) {
-  res.send('DELETE logs route hit')
+router.delete(`/:id`,
+  async (req, res) => {
+    // console.log("new request", req.params.id)
+    try {
+    //create variable set to return value of finding by user id
+    await Log.findByIdAndRemove(req.params.id);
+
+    // Return Successful removal message
+    res.json({ msg: 'Log Successfully Removed' })
+
+    //Handle error messages
+    } catch (error) {
+    console.error(error.message)
+    res.status(500).send('Server Error')
+    }
 });
 
 module.exports = router;

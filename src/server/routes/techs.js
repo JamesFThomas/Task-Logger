@@ -67,21 +67,13 @@ router.post('/', async (req, res) => {
 // @access public
 router.delete(`/:id`,
 async (req, res) => {
-    console.log("new request", req.params.id)
     try {
-      //create variable set to return value of finding by user id
-    let tech = await Tech.findById(req.params.id)
-
-    // If contact not found by user id return error
-    if(!tech){
-      return res.status(404).json({ msg: 'Tech not in system' })
-    }
-    else {
       // If tech found by id update persisted contact information
       await Tech.findByIdAndRemove(req.params.id);
-      // Return Updated Contact Information
+
+      // Return Successful removal message
       res.json({ msg: 'Tech Successfully Removed' })
-    }
+
     //Handle error messages
     } catch (error) {
     console.error(error.message)
