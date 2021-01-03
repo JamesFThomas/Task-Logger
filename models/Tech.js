@@ -2,14 +2,15 @@
 const mongoose = require('mongoose');
 
 // Create model for log data to be saved in database
-const TechSchema = mongoose.mongoose.Schema({
+const TechSchema = mongoose.Schema({
   firstName: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   lastName: {
     type: String,
-    required: true
+    required: true,
   }
 });
 
