@@ -11,8 +11,19 @@ const config = require('config');
 // @route GET/techs
 // @desc retrieve list of technicians from database
 // @access public
-router.get('/', function (req, res) {
-  res.send('GET techs route hit')
+router.get('/',
+  async (req, res) => {
+    try {
+      // Create variable set to returned values found in database
+      let techs = await Tech.find({ }).sort({ date: -1 })
+      // Respond with array of contacts correlated to that user id
+      res.json(techs);
+
+    // Respond to any Errors
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Server Error');
+    }  // res.send('GET techs route hit')
 });
 
 // @route POST/techs
