@@ -10,9 +10,19 @@ const Log = require('../../../models/Log');
 // @route GET/logs
 // @desc retrieve list of logs from database
 // @access public
-router.get('/', function (req, res) {
-  res.send('GET logs route hit')
-  res.send()
+router.get('/',
+  async (req, res) => {
+    try {
+      // Create variable set to returned values found in database
+      let logs = await Log.find({ }).sort({ date: -1 })
+      // Respond with array of contacts correlated to that user id
+      res.json(logs);
+
+      // Respond to any Errors
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Server Error');
+    }
 });
 
 // @route POST/logs
