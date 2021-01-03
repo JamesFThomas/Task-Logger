@@ -57,8 +57,37 @@ router.post('/', async (req, res) => {
 // @route UPDATE/logs
 // @desc  updated a log in database
 // @access public
-router.put(`/:id`, function (req, res) {
-  res.send('PUT logs route hit')
+router.put(`/:id`,
+  async (req, res) =>{
+
+    // Deconstruct contact information from request object
+    const { tech, message, attention, date } = req.body;
+
+   // Build contact object to hold values to be updated
+   const contactFields = {};
+   // Assign transmitted data to appropriate contactFields prop
+   if(tech) contactFields.tech = tech;
+   if(message) contactFields.message = message;
+   if(attention) contactFields.attention = attention;
+   if(date) contactFields.date = date;
+
+   try {
+    //create variable set to return value of finding by user id
+    let log = await Log.findByIdAndUpdate(req.params.id,
+      // Update contact information with values in contactFields object
+      { $set: contactFields },
+      { new: true}
+    );
+
+   // Return Updated Contact Information
+   res.json(log)
+
+  // Handle error messages
+  } catch (error) {
+    console.error(error.message)
+    res.status(500).send('Server Error')
+  }
+
 });
 
 // @route DELETE/logs
