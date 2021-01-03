@@ -87,9 +87,6 @@ async (req, res) => {
     console.error(error.message)
     res.status(500).send('Server Error')
     }
-
-    // res.send('hit the delete route')// this works
-
 });
 
 module.exports = router;

@@ -18,8 +18,30 @@ router.get('/', function (req, res) {
 // @route POST/logs
 // @desc add a logs to database
 // @access public
-router.post('/', function (req, res) {
-  res.send('POST logs route hit')
+router.post('/', async (req, res) => {
+
+  // Deconstruct contact information from request object
+   const { tech, message, attention, date } = req.body;
+
+   try {
+     // Create variable set to new contact model to be persisted in db
+     const newLog = new Log({
+        tech,
+        message,
+        attention,
+        date
+     });
+
+     // Create variable set to return value of saving new log in system
+     const log = await newLog.save()
+     // Return the new log information to the client
+     res.json(log)
+
+   } catch (error) {
+     console.error(error.message)
+     res.status(500).send('Server Error')
+   }
+
 });
 
 // @route UPDATE/logs
