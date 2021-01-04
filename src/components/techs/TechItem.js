@@ -13,7 +13,7 @@ import M from 'materialize-css/dist/js/materialize.min.js'
   // pass in and destructor props for use inside component
 const TechItem = ({ tech: { id, firstName, lastName }, deleteTech }) => {
 
-  // Function - deletes specifc tech and shows message
+  // Function - deletes specific tech and shows message
   const onDelete = () =>{
     deleteTech(id);
     M.toast({ html: `${firstName} ${lastName} was Deleted` })

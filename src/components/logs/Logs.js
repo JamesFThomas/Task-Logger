@@ -37,7 +37,7 @@ const Logs = ({ log: { logs, loading}, getLogs }) => {
           <p className='center'> No Logs To Display...</p>
         ) : (
           // If logs returned map through logs array and render each in own LogItem component
-          logs.map(log => <LogItem key={log.id} log={log}/>)
+          logs.map(log => <LogItem key={log._id} log={log}/>)
         )}
     </ul>
   )

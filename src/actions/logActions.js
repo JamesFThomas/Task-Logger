@@ -146,7 +146,7 @@ export const updateLog = (log) => async dispatch => {
     // update state loading attribute to show preloader component
     setLoading();
     // await response from fetch request, delete method
-    const res = await fetch(`/logs/${log.id}`,{
+    const res = await fetch(`/logs/${log._id}`,{
       method: 'PUT',
       body: JSON.stringify(log),
       headers: {
@@ -167,7 +167,7 @@ export const updateLog = (log) => async dispatch => {
     // If any errors occur during request for data
     dispatch({
       type: LOGS_ERROR,
-      payload: error.response.statusText
+      payload: error
     });
   };
 };
