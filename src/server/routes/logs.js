@@ -73,7 +73,7 @@ router.put(`/:id`,
 
    try {
     //create variable set to return value of finding by user id
-    let log = await Log.findByIdAndUpdate(req.params.id,
+    let log = await Log.findByIdAndUpdate(req.params._id,
       // Update contact information with values in contactFields object
       { $set: contactFields },
       { new: true}
@@ -98,7 +98,8 @@ router.delete(`/:id`,
     // console.log("new request", req.params.id)
     try {
     //create variable set to return value of finding by user id
-    await Log.findByIdAndRemove(req.params.id);
+    const log = await Log.findByIdAndRemove(req.params._id);
+    console.log('deleted log', log)
 
     // Return Successful removal message
     res.json({ msg: 'Log Successfully Removed' })

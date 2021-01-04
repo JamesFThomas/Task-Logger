@@ -11,10 +11,9 @@ const LogSchema = mongoose.Schema({
     type: Boolean,
     required: true
   },
-  // Include Techs as foreign key to match log to tech
   tech: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'techs'
+    type: String,
+    required: true
   },
   date: {
     type: Date,

@@ -7,7 +7,7 @@ const app = express()
 //Initialize instance of express router
 const router = express.Router();
 // create variable set to value of port server will be listening on
-const port = 3000
+const port = 3001
 
 // invoke function to connect to mongoDb instance
 connectDB();

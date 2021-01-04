@@ -36,7 +36,7 @@ const EditLogModal = ({ current, updateLog }) => {
     else{
       // create new log object to be persisted
       const updLog = {
-        id: current.id,
+        _id: current._id,
         message,
         attention,
         tech,
