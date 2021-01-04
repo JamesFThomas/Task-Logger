@@ -30,6 +30,7 @@ const EditLogModal = ({ current, updateLog }) => {
 
   // Function - capture form values and submit to state
   const onSubmit = () =>{
+
     if(message === '' || tech === ''){
       M.toast({ html: 'Please enter a Task and Tech to attend...' })
     }
