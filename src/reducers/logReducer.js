@@ -46,7 +46,7 @@ export default (state = initialState, action) => {
       case UPDATE_LOG:
         return {
           ...state,
-          logs: state.logs.map(log => log._id === action.payload._id ? action.payload : log)
+          logs: state.logs.map(log => log._id === action.payload.id ? action.payload : log)
         };
       case SEARCH_LOGS:
         return {
