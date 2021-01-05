@@ -61,7 +61,7 @@ const EditLogModal = ({ current, updateLog }) => {
     <div id='edit-log-modal' className='modal' style={modalStyle}>
       {/* Modal content */}
       <div className='modal-content'>
-        <h4> Enter System Log</h4>
+        <h4> Edit System Log</h4>
           <div className='row'>
             <div className='input-field'>
               <input
@@ -122,8 +122,8 @@ const EditLogModal = ({ current, updateLog }) => {
 
 // create prop types requirements object
 EditLogModal.propTypes = {
-  updateLog: PropTypes.func.isRequired,
   current: PropTypes.object,
+  updateLog: PropTypes.func.isRequired
 }
 
 // setting styling on modal

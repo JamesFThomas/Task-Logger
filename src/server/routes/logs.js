@@ -68,7 +68,7 @@ router.put(`/:id`,
    // Assign transmitted data to appropriate contactFields prop
    if(tech) contactFields.tech = tech;
    if(message) contactFields.message = message;
-   if(attention) contactFields.attention = attention;
+   if(attention !== undefined) contactFields.attention = attention;
    if(date) contactFields.date = date;
 
    try {

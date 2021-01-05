@@ -19,7 +19,7 @@ const Logs = ({ log: { logs, loading}, getLogs }) => {
     // fetch logs on component render
     getLogs();
     // eslint-disable-next-line
-  },[]);
+  },[ logs ]);
 
   // check for loading attribute
   if(loading || logs === null){
