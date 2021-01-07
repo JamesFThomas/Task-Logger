@@ -25,6 +25,24 @@ router.get('/',
     }
 });
 
+// @route SEARCH/logs
+// @desc retrieve certain logs based on certain text
+// @access public
+router.get(`/:text`,
+  async (req, res) => {
+    try {
+      // Create variable set to returned values found in database
+      let logs = await Log.find({ message: {"$regex":`${req.params.text}`, "$options": "i"}})
+      // Respond with array of contacts correlated to that user id
+      res.json(logs);
+
+      // Respond to any Errors
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Server Error');
+    }
+});
+
 // @route POST/logs
 // @desc add a logs to database
 // @access public
@@ -60,22 +78,22 @@ router.post('/', async (req, res) => {
 router.put(`/:id`,
   async (req, res) =>{
 
-    // Deconstruct contact information from request object
-    const { tech, message, attention, date } = req.body;
+  //   // Deconstruct contact information from request object
+  //   const { tech, message, attention, date } = req.body;
 
-   // Build contact object to hold values to be updated
-   const contactFields = {};
-   // Assign transmitted data to appropriate contactFields prop
-   if(tech) contactFields.tech = tech;
-   if(message) contactFields.message = message;
-   if(attention !== undefined) contactFields.attention = attention;
-   if(date) contactFields.date = date;
+  //  // Build contact object to hold values to be updated
+  //  const contactFields = {};
+  //  // Assign transmitted data to appropriate contactFields prop
+  //  if(tech) contactFields.tech = tech;
+  //  if(message) contactFields.message = message;
+  //  if(attention !== undefined) contactFields.attention = attention;
+  //  if(date) contactFields.date = date;
 
    try {
     //create variable set to return value of finding by user id
     let log = await Log.findByIdAndUpdate(req.params.id,
       // Update contact information with values in contactFields object
-      { $set: contactFields },
+      { $set: req.body },
       { new: true}
     );
 
