@@ -1,12 +1,12 @@
-// IMport React Package and hooks
+// Import React Package and hooks
 import React, { useEffect } from 'react'
-// import connect package to link redux to our application
+// Import connect package to link redux to our application
 import { connect } from 'react-redux';
-// import LogItem component
+// Import LogItem component
 import LogItem from './LogItem'
-// import PreLoader component
+// Import PreLoader component
 import Preloader from '../layout/Preloader'
-//Import Proptypes packages
+// Import Proptypes packages
 import PropTypes from 'prop-types';
 // Import actions from logsActions
 import { getLogs } from '../../actions/logActions'
@@ -15,11 +15,15 @@ import { getLogs } from '../../actions/logActions'
       // passing log as prop, destructor attributes from props to be used/displayed in component
 const Logs = ({ log: { logs, loading}, getLogs }) => {
 
+  const fetchLogs = ()=>{
+    getLogs();
+  }
+
   useEffect(()=>{
     // fetch logs on component render
-    getLogs();
+    fetchLogs();
     // eslint-disable-next-line
-  },[ logs ]);
+  }, [ fetchLogs ]);
 
   // check for loading attribute
   if(loading || logs === null){

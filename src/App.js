@@ -1,19 +1,21 @@
 // Import React framework and hooks
 import React, { useEffect, Fragment } from 'react';
 //Import SearchBar component
-import SearchBar from './components/layout/SearchBar'
+import SearchBar from './components/layout/SearchBar';
 //Import SearchBar component
-import Logs from './components/logs/Logs'
+import Logs from './components/logs/Logs';
 // import AddBtn component
-import AddBtn from './components/layout/AddBtn'
+import AddBtn from './components/layout/AddBtn';
 // import AddLogModal component
-import AddLogModal from './components/logs/AddLogModal'
+import AddLogModal from './components/logs/AddLogModal';
 // import AddLogModal component
-import EditLogModal from './components/logs/EditLogModal'
+import EditLogModal from './components/logs/EditLogModal';
 // import AddTechModal component
-import AddTechModal from './components/techs/AddTechModal'
+import AddTechModal from './components/techs/AddTechModal';
 // import TechListModal component
-import TechListModal from './components/techs/TechListModal'
+import TechListModal from './components/techs/TechListModal';
+// import SearchedLogsModal component
+import SearchedLogsModal from './components/logs/SearchedLogsModal';
 // Import provider to wrap application and access state
 import { Provider } from 'react-redux';
 // Import store to access actions and update state
@@ -42,6 +44,7 @@ const App = () => {
           <AddTechModal />
           <TechListModal />
           <Logs />
+          <SearchedLogsModal />
         </div>
       </Fragment>
     </Provider>

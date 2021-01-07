@@ -8,7 +8,8 @@ import {
   SET_CURRENT,
   CLEAR_CURRENT,
   UPDATE_LOG,
-  SEARCH_LOGS
+  SEARCH_LOGS,
+  CLEAR_SEARCH
 } from '../actions/types'
 
 
@@ -17,7 +18,8 @@ const initialState = {
   logs: null,
   current: null,
   loading: false,
-  error: null
+  error: null,
+  searched: null
 }
 
 
@@ -51,7 +53,7 @@ export default (state = initialState, action) => {
       case SEARCH_LOGS:
         return {
           ...state,
-          logs: action.payload
+          searched: action.payload
         };
       case SET_CURRENT:
         return {
@@ -62,6 +64,11 @@ export default (state = initialState, action) => {
         return {
           ...state,
           current: null
+        };
+      case CLEAR_SEARCH:
+        return {
+          ...state,
+          searched: null
         };
     case SET_LOADING:
       return {

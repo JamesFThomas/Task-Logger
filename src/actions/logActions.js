@@ -10,7 +10,8 @@ import {
   SET_CURRENT,
   CLEAR_CURRENT,
   UPDATE_LOG,
-  SEARCH_LOGS
+  SEARCH_LOGS,
+  CLEAR_SEARCH
 } from './types'
 
 // Function - GET logs from DB file
@@ -138,6 +139,12 @@ export const clearCurrent = () => {
     type: CLEAR_CURRENT
   }
 };
+// Function - CLEAR all logs from searched array
+export const clearSearch = () => {
+  return {
+    type: CLEAR_SEARCH
+  }
+};
 
 // Function - UPDATE log in DB file
 export const updateLog = (log) => async dispatch => {
@@ -178,7 +185,8 @@ export const searchLogs = (text) => async dispatch => {
     // update state loading attribute to show preloader component
     setLoading();
     // create variable set to return value of fetch to GET logs containing certain text
-    const res = await fetch(`/logs?q=${text}`);
+    // const res = await fetch(`/logs?q=${text}`);
+    const res = await fetch(`/logs/${text}`);
     // create variable set to json format of returned data
     const data = await res.json();
     //create dispatch object to go to reducer
@@ -191,7 +199,7 @@ export const searchLogs = (text) => async dispatch => {
     // If any errors occur during request for data
     dispatch({
       type: LOGS_ERROR,
-      payload: error.response.statusText
+      payload: error
     });
   };
 }
