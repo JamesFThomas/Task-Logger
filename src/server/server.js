@@ -7,7 +7,7 @@ const app = express()
 //Initialize instance of express router
 const router = express.Router();
 // create variable set to value of port server will be listening on
-const port = 3001
+const port = process.env.PORT || 3001;
 
 // invoke function to connect to mongoDb instance
 connectDB();
@@ -20,9 +20,17 @@ app.get('/', (req, res) => {
   res.send('Home route hit')
 })
 
-// Routers
+// API Routers
 app.use('/logs', require('./routes/logs'));
 app.use('/techs', require('./routes/techs'));
+
+// Check the envrionment mode
+if(process.env.NODE_ENV === 'production'){
+  // Set static folder to serve
+  app.use(express.static('client/build'));
+  // route to serve build folder
+  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'build', 'index.html')));
+}
 
 // Set connection message to show when server started
 app.listen(port, () => {
