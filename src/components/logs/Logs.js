@@ -15,15 +15,11 @@ import { getLogs } from '../../actions/logActions'
       // passing log as prop, destructor attributes from props to be used/displayed in component
 const Logs = ({ log: { logs, loading}, getLogs }) => {
 
-  const fetchLogs = ()=>{
-    getLogs();
-  }
-
   useEffect(()=>{
-    // fetch logs on component render
-    fetchLogs();
+   // obj.a();
+    getLogs();
     // eslint-disable-next-line
-  }, [ fetchLogs ]);
+  }, [ logs ]);
 
   // check for loading attribute
   if(loading || logs === null){

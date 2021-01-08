@@ -8,13 +8,12 @@ import PropTypes from 'prop-types';
 import LogItem from './LogItem'
 // Import logActions folder
 import { searchLogs, clearSearch } from '../../actions/logActions';
-import { textareaAutoResize } from 'materialize-css';
 
 const SearchedLogsModal = ({ log:{ loading, searched }, searchLogs, clearSearch }) => {
 
   useEffect(()=>{
     searchLogs();
-  },[])
+  },[ searchLogs ])
 
   const closeModal = () =>{
     clearSearch();
