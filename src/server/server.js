@@ -19,10 +19,10 @@ app.use(express.json({ extend: false }));
 app.use('/logs', require('./routes/logs'));
 app.use('/techs', require('./routes/techs'));
 
-// Check the envrionment mode
+// Check the environment mode
 if(process.env.NODE_ENV === 'production'){
   // Set static folder to serve
-  app.use(express.static('client/build'));
+  app.use(express.static('build'));
   // route to serve build folder
   app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'build', 'index.html')));
 }
