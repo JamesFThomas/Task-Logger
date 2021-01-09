@@ -15,11 +15,6 @@ connectDB();
 // Initialize express middleware to parse request body data within routes
 app.use(express.json({ extend: false }));
 
-// Route - home route - MAY NOT NEED THIS
-app.get('/', (req, res) => {
-  res.send('Home route hit')
-})
-
 // API Routers
 app.use('/logs', require('./routes/logs'));
 app.use('/techs', require('./routes/techs'));
