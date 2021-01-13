@@ -1,5 +1,5 @@
 // Import react framework
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 //IMport connect package
 import { connect } from 'react-redux';
 // Import prop-types package

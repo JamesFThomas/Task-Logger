@@ -8,13 +8,14 @@ import PropTypes from 'prop-types';
 import LogItem from './LogItem'
 // Import logActions folder
 import { searchLogs, clearSearch } from '../../actions/logActions';
-import { textareaAutoResize } from 'materialize-css';
+
 
 const SearchedLogsModal = ({ log:{ loading, searched }, searchLogs, clearSearch }) => {
 
   useEffect(()=>{
     searchLogs();
-  },[])
+    //eslint-disable-next-line
+  }, [])
 
   const closeModal = () =>{
     clearSearch();
@@ -29,7 +30,7 @@ const SearchedLogsModal = ({ log:{ loading, searched }, searchLogs, clearSearch 
          {/* { searched !== null && (
             searched.map(log => <p key={log._id} log={log}></p>)
           ) } */}
-          { !loading && !searched ? (
+          { !searched.length ? (
           <li className='center'> No Logs Match Your Search...</li>
         ) : (
           // If logs returned map through logs array and render each in own LogItem component

@@ -19,7 +19,7 @@ const initialState = {
   current: null,
   loading: false,
   error: null,
-  searched: null
+  searched: []
 }
 
 
@@ -36,7 +36,7 @@ export default (state = initialState, action) => {
       case ADD_LOG:
         return {
           ...state,
-          logs: [...state.logs, action.payload],
+          logs: [action.payload, ...state.logs],
           loading: false
         };
       case DELETE_LOG:
@@ -48,7 +48,8 @@ export default (state = initialState, action) => {
       case UPDATE_LOG:
         return {
           ...state,
-          logs: state.logs.map(log => log._id === action.payload.id ? action.payload : log)
+          logs: [action.payload, ...state.logs.filter(log => log._id !== action.payload._id)]
+          // logs: state.logs.map(log => log._id === action.payload.id ? action.payload : log)
         };
       case SEARCH_LOGS:
         return {
@@ -68,7 +69,7 @@ export default (state = initialState, action) => {
       case CLEAR_SEARCH:
         return {
           ...state,
-          searched: null
+          searched: []
         };
     case SET_LOADING:
       return {
