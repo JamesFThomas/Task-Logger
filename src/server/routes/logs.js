@@ -116,8 +116,7 @@ router.delete(`/:id`,
     // console.log("new request", req.params.id)
     try {
     //create variable set to return value of finding by user id
-    const log = await Log.findByIdAndRemove(req.params.id);
-    // console.log('deleted log', log)
+    await Log.findByIdAndRemove(req.params.id);
 
     // Return Successful removal message
     res.json({ msg: 'Log Successfully Removed' })

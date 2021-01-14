@@ -2,18 +2,18 @@
 const mongoose = require('mongoose');
 // Import config package to access mongoDB credentials
 const config = require('config');
-// Import dotenv package to use environment variables 
+// Initialize db variable and set to mongo credentials in config file
+const db = config.get('mongoURI');
+// Import dotenv package to use environment variables
 const dotenv = require('dotenv');
-// Initalize new instance in file to acces envrionment variables
-dotenv.config(); 
-// Create local variable set to hidden mongoDB connection data
-const mongoDB_URI = process.env.MONGO_DB_URI
+// Initialize new instance in file to access environment variables
+dotenv.config();
 
 // Function => create connection to cloud DB instance
 const connectDB =  async () => {
   try {
     // Await success response from mongoDB atlas
-    await mongoose.connect( mongoDB_URI, {
+    await mongoose.connect(process.env.MONGO_DB_URI, {
       useNewUrlParser: true,
       useCreateIndex: true,
       useFindAndModify: false,

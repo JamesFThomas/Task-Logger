@@ -16,34 +16,36 @@ import { getLogs } from '../../actions/logActions'
 const Logs = ({ log: { logs, loading}, getLogs }) => {
 
   useEffect(()=>{
-   // obj.a();
+    if(!logs)
+    // fetch logs on component render
     getLogs();
     // eslint-disable-next-line
-  }, [ logs ]);
+  }, []);
 
   // check for loading attribute
-  if(loading || logs === null){
+  if(loading || !logs){
     // if true display Preloader component
     return < Preloader/>
   }
 
+
   return (
-    <ul className='collection with-header'>
+      <ul className='collection with-header'>
       <li className='collection-header'>
         <h4 className='center'> System Logs </h4>
       </li>
       {/* Conditionally render loading message if no logs returned*/}
-        { !loading && !logs.length ? (
+        {!loading && !logs.length ? (
           <p className='center'> No Logs To Display...</p>
-        ) : (
-          // If logs returned map through logs array and render each in own LogItem component
-          logs.map(log => <LogItem key={log._id} log={log}/>)
-        )}
+          ) : (
+            // If logs returned map through logs array and render each in own LogItem component
+            logs.map(log => <LogItem key={log._id} log={log}/>)
+            )}
     </ul>
   )
 }
 
-// Create Proptypes requirement for component
+// Create prop types requirements for component
 Logs.protoTypes = {
   log: PropTypes.object.isRequired,
   getLogs: PropTypes.func.isRequired,
