@@ -64,5 +64,6 @@
   "devDependencies": {
     "concurrently": "^5.3.0",
     "json-server": "^0.16.3"
-  }
+  },
+  "proxy": "http://localhost:3001"
 }
