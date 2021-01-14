@@ -7,10 +7,12 @@
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
     "config": "^3.3.3",
+    "dotenv": "^8.2.0",
     "materialize-css": "^1.0.0",
     "moment": "^2.29.1",
     "mongoose": "^5.11.9",
     "nodemon": "^2.0.6",
+    "path": "^0.12.7",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-moment": "^1.1.1",
@@ -28,8 +30,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "nodemon ./src/server/server.js",
-    "both":"concurrently \"npm start\" \"npm run server\""
+    "server": "nodemon ./server.js",
+    "both": "concurrently \"npm start\" \"npm run server\""
   },
   "eslintConfig": {
     "extends": [
