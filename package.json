@@ -3,14 +3,6 @@
   "version": "0.1.0",
   "description": "An Application to manage work requests for in house technicians at a company",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JamesFThomas/Task-Logger.git"
-  },
-  "bugs": {
-    "url": "https://github.com/JamesFThomas/Task-Logger/issues"
-  },
-  "homepage": "https://github.com/JamesFThomas/Task-Logger#readme",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
