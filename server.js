@@ -28,6 +28,14 @@ if(process.env.NODE_ENV === 'production'){
 }
 
 
+// Check the environment mode
+if(process.env.NODE_ENV === 'production'){
+  // Set static folder to serve
+  app.use(express.static('build'));
+  // route to serve build folder
+  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'build', 'index.html')));
+}
+
 // Set connection message to show when server started
 app.listen(port, () => {
   console.log(`Server listening on PORT: ${port}`)

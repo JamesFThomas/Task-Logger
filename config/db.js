@@ -1,4 +1,4 @@
-// import mongoose to connect to db
+// Import mongoose to connect to db
 const mongoose = require('mongoose');
 // Import config package to access mongoDB credentials
 const config = require('config');

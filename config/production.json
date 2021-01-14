@@ -1,3 +1,7 @@
 {
   "mongoURI": "mongodb+srv://jamesfthomas:eldorado1@tasklogger.sm4im.mongodb.net/TaskLogger?retryWrites=true&w=majority"
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

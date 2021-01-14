@@ -8,14 +8,21 @@ import PropTypes from 'prop-types';
 import LogItem from './LogItem'
 // Import logActions folder
 import { searchLogs, clearSearch } from '../../actions/logActions';
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 
 const SearchedLogsModal = ({ log:{ loading, searched }, searchLogs, clearSearch }) => {
 
   useEffect(()=>{
     searchLogs();
+<<<<<<< HEAD
     //eslint-disable-next-line
   }, [])
+=======
+  },[ searchLogs ])
+>>>>>>> main
 
   const closeModal = () =>{
     clearSearch();
