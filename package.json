@@ -36,7 +36,7 @@
     "eject": "react-scripts eject",
     "server": "nodemon ./server.js",
     "both": "concurrently \"npm start\" \"npm run server\"",
-    "heroku-postbuild":"npm instal npm run build"
+    "heroku-postbuild":"npm install npm run build"
   },
   "eslintConfig": {
     "extends": [
