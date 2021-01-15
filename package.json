@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "An Application to manage work requests for in house technicians at a company",
   "private": true,
+  "engines": {
+    "node": "12.18.3"
+    },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
@@ -33,7 +36,7 @@
     "eject": "react-scripts eject",
     "server": "nodemon ./server.js",
     "both": "concurrently \"npm start\" \"npm run server\"",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install && npm build"
+    "heroku-postbuild":"npm run build"
   },
   "eslintConfig": {
     "extends": [
