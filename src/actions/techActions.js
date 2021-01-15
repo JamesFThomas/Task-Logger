@@ -28,7 +28,7 @@ export const getTechs = () => async dispatch => {
     // If any errors occur during request for data
     dispatch({
       type: TECHS_ERROR,
-      payload: error.response.statusText
+      payload: error.response
     });
   };
 };

@@ -56,7 +56,7 @@ export const getLogs = () => async dispatch => {
     // If any errors occur during request for data
     dispatch({
       type: LOGS_ERROR,
-      payload: error.response.statusText
+      payload: error.response
     });
   };
 };
