@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 // Import config package to access mongoDB credentials
 const config = require('config');
 // Initialize db variable and set to mongo credentials in config file
-const db = config.get('mongoURI');
+const db = config.get('mongoURI') || process.env.MONGO_DB_URI;
 
 
 // Function => create connection to cloud DB instance
