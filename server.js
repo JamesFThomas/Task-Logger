@@ -5,7 +5,7 @@ const connectDB = require('./config/db')
 // Initialize new instance of express
 const app = express()
 // create variable set to value of port server will be listening on
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 4000;
 //import path package for file paths to static folders
 const path = require('path');
 
